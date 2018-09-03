@@ -1,0 +1,50 @@
+snack-bar.component.ts
+```
+import { Component, OnInit } from '@angular/core';
+import {MatSnackBarRef} from '@angular/material';
+
+@Component({
+  selector: 'app-snack-bar',
+  templateUrl: './snack-bar.component.html',
+  styleUrls: ['./snack-bar.component.css']
+})
+export class SnackBarComponent implements OnInit {
+
+  message: string = "the message";
+  return: string = "";
+
+  constructor(public mySnackBar: MatSnackBarRef<SnackBarComponent>) { }
+
+  ngOnInit() {
+  }
+
+  close() {
+    this.mySnackBar.dismiss();
+  }
+
+  ok() {
+    this.return = "ok";
+    this.mySnackBar.dismiss();
+  }
+
+}
+```
+
+调用
+```
+snackBarRef: MatSnackBarRef<SnackBarComponent>;
+
+  openSnackBar() {
+    this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent);
+
+    this.snackBarRef.afterDismissed().subscribe(() => {
+      if(this.snackBarRef.instance.return === "ok"){
+        this.open_add_user_dialog();
+      }
+    });
+  }
+
+  closeSnackBar() {
+    this.snackBarRef.dismiss();
+  }
+```
