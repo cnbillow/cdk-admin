@@ -45,6 +45,8 @@ snackBarRef: MatSnackBarRef<SnackBarComponent>;
   }
 
   closeSnackBar() {
-    this.snackBarRef.dismiss();
+    if (this.snackBarRef !== undefined && this.snackBarRef != null ) {
+      this.snackBarRef.dismiss();
+    }
   }
 ```
