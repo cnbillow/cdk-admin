@@ -1,0 +1,15 @@
+loading 
+
+親画面
+<mat-progress-spinner *ngIf="reasonEventsStateService.is_search"
+class="progress_spinner" [color]="'primary'" [mode]="'indeterminate'">
+</mat-progress-spinner>
+
+.progress_spinner {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+
+子画面
+<button mat-raised-button color="primary" (click)="filterEvents(sort.value)" [disabled]="reasonEventsStateService.is_search">検索</button>
